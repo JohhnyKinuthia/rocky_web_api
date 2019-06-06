@@ -1,0 +1,14 @@
+{
+  "name": "rocky-boda-api",
+  "version": "1.0.0",
+  "description": "Rocky Boda Rest Api",
+  "main": "index.js",
+  "repository": "https://github.com/JohhnyKinuthia/rocky_web_api.git",
+  "author": "Isaac Kinuthia",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "pg": "^7.11.0"
+  }
+}
