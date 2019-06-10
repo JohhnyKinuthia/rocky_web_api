@@ -74,7 +74,9 @@ CREATE TABLE IF NOT EXISTS loan(
     interest_rate NUMERIC(5, 5) NOT NULL DEFAULT 5,
     repayment_period int not null,
     issue_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    id_number INT REFERENCES applicant(id_number)
+    id_number INT REFERENCES applicant(id_number),
+    loan_status VARCHAR(20) CHECK(loan_status IN('approved', 'pending', 'declined')),
+    status_note TEXT
 );
 
 CREATE TABLE IF NOT EXISTS guarantor(
@@ -83,6 +85,7 @@ CREATE TABLE IF NOT EXISTS guarantor(
     mobile_number VARCHAR(13)
 );
 
+---Really ambiguous???? Should we put the guarantor id in the loans table instead??
 CREATE TABLE IF NOT EXISTS guaranteed_loans(
     applicant_id int REFERENCES applicant(id_number),
     guarantor_id INT REFERENCES guarantor(id_number),
@@ -91,7 +94,7 @@ CREATE TABLE IF NOT EXISTS guaranteed_loans(
 );
 
 CREATE TABLE IF NOT EXISTS bank(
-    bank_name VARCHAR(80), CHECK(bank_name IN ('Equity bank', 'Cooperative Bank')),--to-be-completed 
+    bank_name VARCHAR(80), CHECK(bank_name IN ('Equity bank', 'Cooperative Bank', 'DTB')),--to-be-completed 
     PRIMARY KEY(bank_name)   
 );
 
